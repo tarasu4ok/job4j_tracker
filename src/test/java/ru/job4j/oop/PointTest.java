@@ -28,4 +28,18 @@ public class PointTest extends TestCase {
         double rsl = a.distance(b);
         assertThat(rsl, closeTo(4.24, 0.01));
     }
+
+    public void testDistance3d1() {
+        Point a = new Point(0, 0, 0);
+        Point b = new Point(0, 0, 1);
+        double rsl = a.distance3d(b);
+        assertThat(rsl, is(1.0));
+    }
+
+    public void testDistance3d2() {
+        Point a = new Point(0, 0, 0);
+        Point b = new Point(1, 1, 1);
+        double rsl = a.distance3d(b);
+        assertThat(rsl, closeTo(1.73, 0.01));
+    }
 }
