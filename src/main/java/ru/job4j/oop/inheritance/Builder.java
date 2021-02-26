@@ -1,8 +1,8 @@
-package ru.job4j.oop;
+package ru.job4j.oop.inheritance;
 
 import java.util.Date;
 
-public class Builder extends Engineer{
+public class Builder extends Engineer {
     private boolean canWorkAtHeight;
 
     public Builder(String name, String surname, String education, Date birthday, byte category, boolean canWorkAtHeight) {

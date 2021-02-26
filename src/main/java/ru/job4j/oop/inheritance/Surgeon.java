@@ -1,8 +1,8 @@
-package ru.job4j.oop;
+package ru.job4j.oop.inheritance;
 
 import java.util.Date;
 
-public class Surgeon extends Doctor{
+public class Surgeon extends Doctor {
     private String specialization;
 
     public Surgeon(String name, String surname, String education, Date birthday, String category, String specialization) {
