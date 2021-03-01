@@ -28,5 +28,9 @@ public class StartUI {
         for (Item itemFoundByName: itemsFoundByName) {
             System.out.println("id: " + itemFoundByName.getId() + ", name: " + itemFoundByName.getName());
         }
+        Item newItem = new Item("Task #5");
+        System.out.println("========================");
+        System.out.println("Using method toString() for new item:");
+        System.out.println(newItem.toString());
     }
 }
