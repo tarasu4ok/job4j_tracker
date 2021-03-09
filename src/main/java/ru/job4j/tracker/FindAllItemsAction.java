@@ -16,13 +16,13 @@ public class FindAllItemsAction implements UserAction{
     public boolean execute(Input input, Tracker tracker) {
         out.println("=== ============= ===");
         Item[] allItems = tracker.findAll();
-        if (allItems.length == 0) {
+        if (allItems.length != 0) {
+            for (Item item : allItems) {
+                out.println(item);
+            }
+        } else {
             out.println("No items found");
         }
-        for (Item item : allItems) {
-            out.println(item);
-        }
-
         return true;
     }
 }
