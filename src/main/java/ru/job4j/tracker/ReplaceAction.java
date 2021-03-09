@@ -14,13 +14,13 @@ public class ReplaceAction implements UserAction{
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        System.out.println("=== ============= ===");
+        out.println("=== ============= ===");
         int id = input.askInt("Enter Item id you want to edit: ");
         String name = input.askStr("Enter new Item name you want to set: ");
         if (tracker.replace(id, new Item(name))) {
-            System.out.println("Item with id = " + id + " was successfully edited");
+            out.println("Item with id = " + id + " was successfully edited");
         } else {
-            System.out.println("Item with id = " + id + " was not found");
+            out.println("Item with id = " + id + " was not found");
         }
         return true;
     }
