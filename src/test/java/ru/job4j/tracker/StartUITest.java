@@ -55,7 +55,8 @@ public class StartUITest {
         assertNull(tracker.findById(item.getId()));
     }
 
-    public @Test void whenExit() {
+    @Test
+    public void whenExit() {
         Output output = new StubOutput();
         Input in = new StubInput(
                 new String[] {"0"}
