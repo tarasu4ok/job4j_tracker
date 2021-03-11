@@ -76,71 +76,100 @@ public class StartUITest {
     public void whenFindAllItems() {
         Output output = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0"}
+                new String[] {"0", "Item name", "1", "2"}
         );
         Tracker tracker = new Tracker();
-        tracker.add(new Item("Task#1"));
-        tracker.add(new Item("Task#2"));
-        UserAction action = new FindAllItemsAction(output);
-        action.execute(in, tracker);
+        UserAction[] actions = {
+                new CreateAction(output),
+                new FindAllItemsAction(output),
+                new ExitAction()
+        };
+        new StartUI(output).init(in, tracker, actions);
         String expected = "";
         Item[] allItems = tracker.findAll();
-        if (allItems.length != 0) {
-            for (Item item : allItems) {
-                expected += item + System.lineSeparator();
-            }
-        } else {
-            expected = "No items found";
+        for (Item item : allItems) {
+            expected += item + System.lineSeparator();
         }
-        assertThat(output.toString(), is(expected));
+        assertThat(output.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. Create a new Item" + System.lineSeparator() +
+                        "1. All items in Tracker" + System.lineSeparator() +
+                        "2. Exit Program" + System.lineSeparator() +
+                        "Menu." + System.lineSeparator() +
+                        "0. Create a new Item" + System.lineSeparator() +
+                        "1. All items in Tracker" + System.lineSeparator() +
+                        "2. Exit Program" + System.lineSeparator() +
+                        expected +
+                        "Menu." + System.lineSeparator() +
+                        "0. Create a new Item" + System.lineSeparator() +
+                        "1. All items in Tracker" + System.lineSeparator() +
+                        "2. Exit Program" + System.lineSeparator()
+        ));
     }
 
     @Test
     public void whenFindItemsByName() {
         Output output = new StubOutput();
-        String name = "Task#1";
         Input in = new StubInput(
-                new String[] {name}
+                new String[] {"0", "Item name", "1", "Item name", "2"}
         );
         Tracker tracker = new Tracker();
-        tracker.add(new Item("Task#1"));
-        tracker.add(new Item("Task#2"));
-        tracker.add(new Item("Task#1"));
-        UserAction action = new FindItemsByNameAction(output);
-        action.execute(in, tracker);
+        UserAction[] actions = {
+                new CreateAction(output),
+                new FindItemsByNameAction(output),
+                new ExitAction()
+        };
+        new StartUI(output).init(in, tracker, actions);
         String expected = "";
-        Item[] items = tracker.findByName(name);
-        if (items.length == 0) {
-            expected = "Items with name = " + name + " were not found";
-        } else {
-            for (Item item : items) {
-                expected += item + System.lineSeparator();
-            }
+        Item[] itemsByName = tracker.findByName("Item name");
+        for (Item item : itemsByName) {
+            expected += item + System.lineSeparator();
         }
-        assertThat(output.toString(), is(expected));
+        assertThat(output.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. Create a new Item" + System.lineSeparator() +
+                        "1. Find Item by name" + System.lineSeparator() +
+                        "2. Exit Program" + System.lineSeparator() +
+                        "Menu." + System.lineSeparator() +
+                        "0. Create a new Item" + System.lineSeparator() +
+                        "1. Find Item by name" + System.lineSeparator() +
+                        "2. Exit Program" + System.lineSeparator() +
+                        expected +
+                        "Menu." + System.lineSeparator() +
+                        "0. Create a new Item" + System.lineSeparator() +
+                        "1. Find Item by name" + System.lineSeparator() +
+                        "2. Exit Program" + System.lineSeparator()
+        ));
     }
 
     @Test
     public void whenFindItemById() {
-        Tracker tracker = new Tracker();
-        tracker.add(new Item("Task#1"));
-        Item searchItem = new Item("Task#3");
-        tracker.add(searchItem);
-        int id = searchItem.getId();
-        tracker.add(new Item("Task#2"));
         Output output = new StubOutput();
         Input in = new StubInput(
-                new String[] {String.valueOf(id)}
+                new String[] {"0", "Item name", "1", "1", "2"}
         );
-        UserAction action = new FindItemByIdAction(output);
-        action.execute(in, tracker);
-        String expected = "";
-        Item item = tracker.findById(id);
-        if (item == null) {
-            expected = "Items with id = " + id + " were not found";
-        } else {
-            expected += item + System.lineSeparator();
-        }
-        assertThat(output.toString(), is(expected));
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new CreateAction(output),
+                new FindItemByIdAction(output),
+                new ExitAction()
+        };
+        new StartUI(output).init(in, tracker, actions);
+        String expected = tracker.findById(1).toString() + System.lineSeparator();
+        assertThat(output.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. Create a new Item" + System.lineSeparator() +
+                        "1. Find Item by Id" + System.lineSeparator() +
+                        "2. Exit Program" + System.lineSeparator() +
+                        "Menu." + System.lineSeparator() +
+                        "0. Create a new Item" + System.lineSeparator() +
+                        "1. Find Item by Id" + System.lineSeparator() +
+                        "2. Exit Program" + System.lineSeparator() +
+                        expected +
+                        "Menu." + System.lineSeparator() +
+                        "0. Create a new Item" + System.lineSeparator() +
+                        "1. Find Item by Id" + System.lineSeparator() +
+                        "2. Exit Program" + System.lineSeparator()
+        ));
     }
 }
