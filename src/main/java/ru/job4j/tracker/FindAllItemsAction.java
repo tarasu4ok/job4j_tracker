@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.List;
+
 public class FindAllItemsAction implements UserAction{
     private final Output out;
 
@@ -14,8 +16,8 @@ public class FindAllItemsAction implements UserAction{
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        Item[] allItems = tracker.findAll();
-        if (allItems.length != 0) {
+        List<Item> allItems = tracker.findAll();
+        if (allItems.size() != 0) {
             for (Item item : allItems) {
                 out.println(item);
             }
