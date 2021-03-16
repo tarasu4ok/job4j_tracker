@@ -13,7 +13,8 @@ public class Library {
         books[3] = book4;
         System.out.println("Books in our library:");
         for (int index = 0; index < books.length; index++) {
-            System.out.println(String.valueOf(index + 1) + ". Name: " + books[index].getName() + ", pages: " + books[index].getPageCount());
+            System.out.println(String.valueOf(index + 1) + ". Name: " + books[index].getName()
+                    + ", pages: " + books[index].getPageCount());
         }
         Book temp = books[0];
         books[0] = books[3];
@@ -21,13 +22,15 @@ public class Library {
         System.out.println("===========================================");
         System.out.println("Books in our library after replace:");
         for (int index = 0; index < books.length; index++) {
-            System.out.println(String.valueOf(index + 1) + ". Name: " + books[index].getName() + ", pages: " + books[index].getPageCount());
+            System.out.println(String.valueOf(index + 1) + ". Name: " + books[index].getName()
+                    + ", pages: " + books[index].getPageCount());
         }
         System.out.println("===========================================");
         System.out.println("Books in our library with name " + '"' + "Clean code" + '"' + ":");
         for (int index = 0; index < books.length; index++) {
             if ("Clean code".equals(books[index].getName())) {
-                System.out.println(String.valueOf(index + 1) + ". Name: " + books[index].getName() + ", pages: " + books[index].getPageCount());
+                System.out.println(String.valueOf(index + 1) + ". Name: " + books[index].getName()
+                        + ", pages: " + books[index].getPageCount());
             }
         }
     }

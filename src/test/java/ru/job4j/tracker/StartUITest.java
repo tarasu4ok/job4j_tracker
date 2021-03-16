@@ -66,8 +66,8 @@ public class StartUITest {
         actions.add(new ExitAction());
         new StartUI(output).init(in, tracker, actions);
         assertThat(output.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Exit Program" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                        + "0. Exit Program" + System.lineSeparator()
         ));
     }
 
@@ -89,19 +89,19 @@ public class StartUITest {
             expected += item + System.lineSeparator();
         }
         assertThat(output.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Create a new Item" + System.lineSeparator() +
-                        "1. All items in Tracker" + System.lineSeparator() +
-                        "2. Exit Program" + System.lineSeparator() +
-                        "Menu." + System.lineSeparator() +
-                        "0. Create a new Item" + System.lineSeparator() +
-                        "1. All items in Tracker" + System.lineSeparator() +
-                        "2. Exit Program" + System.lineSeparator() +
-                        expected +
-                        "Menu." + System.lineSeparator() +
-                        "0. Create a new Item" + System.lineSeparator() +
-                        "1. All items in Tracker" + System.lineSeparator() +
-                        "2. Exit Program" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                        + "0. Create a new Item" + System.lineSeparator()
+                        + "1. All items in Tracker" + System.lineSeparator()
+                        + "2. Exit Program" + System.lineSeparator()
+                        + "Menu." + System.lineSeparator()
+                        + "0. Create a new Item" + System.lineSeparator()
+                        + "1. All items in Tracker" + System.lineSeparator()
+                        + "2. Exit Program" + System.lineSeparator()
+                        + expected
+                        + "Menu." + System.lineSeparator()
+                        + "0. Create a new Item" + System.lineSeparator()
+                        + "1. All items in Tracker" + System.lineSeparator()
+                        + "2. Exit Program" + System.lineSeparator()
         ));
     }
 
@@ -123,19 +123,19 @@ public class StartUITest {
             expected += item + System.lineSeparator();
         }
         assertThat(output.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Create a new Item" + System.lineSeparator() +
-                        "1. Find Item by name" + System.lineSeparator() +
-                        "2. Exit Program" + System.lineSeparator() +
-                        "Menu." + System.lineSeparator() +
-                        "0. Create a new Item" + System.lineSeparator() +
-                        "1. Find Item by name" + System.lineSeparator() +
-                        "2. Exit Program" + System.lineSeparator() +
-                        expected +
-                        "Menu." + System.lineSeparator() +
-                        "0. Create a new Item" + System.lineSeparator() +
-                        "1. Find Item by name" + System.lineSeparator() +
-                        "2. Exit Program" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                        + "0. Create a new Item" + System.lineSeparator()
+                        + "1. Find Item by name" + System.lineSeparator()
+                        + "2. Exit Program" + System.lineSeparator()
+                        + "Menu." + System.lineSeparator()
+                        + "0. Create a new Item" + System.lineSeparator()
+                        + "1. Find Item by name" + System.lineSeparator()
+                        + "2. Exit Program" + System.lineSeparator()
+                        + expected
+                        + "Menu." + System.lineSeparator()
+                        + "0. Create a new Item" + System.lineSeparator()
+                        + "1. Find Item by name" + System.lineSeparator()
+                        + "2. Exit Program" + System.lineSeparator()
         ));
     }
 
@@ -153,19 +153,19 @@ public class StartUITest {
         new StartUI(output).init(in, tracker, actions);
         String expected = tracker.findById(1).toString() + System.lineSeparator();
         assertThat(output.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Create a new Item" + System.lineSeparator() +
-                        "1. Find Item by Id" + System.lineSeparator() +
-                        "2. Exit Program" + System.lineSeparator() +
-                        "Menu." + System.lineSeparator() +
-                        "0. Create a new Item" + System.lineSeparator() +
-                        "1. Find Item by Id" + System.lineSeparator() +
-                        "2. Exit Program" + System.lineSeparator() +
-                        expected +
-                        "Menu." + System.lineSeparator() +
-                        "0. Create a new Item" + System.lineSeparator() +
-                        "1. Find Item by Id" + System.lineSeparator() +
-                        "2. Exit Program" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                        + "0. Create a new Item" + System.lineSeparator()
+                        + "1. Find Item by Id" + System.lineSeparator()
+                        + "2. Exit Program" + System.lineSeparator()
+                        + "Menu." + System.lineSeparator()
+                        + "0. Create a new Item" + System.lineSeparator()
+                        + "1. Find Item by Id" + System.lineSeparator()
+                        + "2. Exit Program" + System.lineSeparator()
+                        + expected
+                        + "Menu." + System.lineSeparator()
+                        + "0. Create a new Item" + System.lineSeparator()
+                        + "1. Find Item by Id" + System.lineSeparator()
+                        + "2. Exit Program" + System.lineSeparator()
         ));
     }
 

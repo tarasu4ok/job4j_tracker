@@ -43,10 +43,10 @@ public class Item {
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        return "Item{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", created=" + formatter.format(created) +
-                '}';
+        return "Item{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", created=" + formatter.format(created)
+                + '}';
     }
 }
