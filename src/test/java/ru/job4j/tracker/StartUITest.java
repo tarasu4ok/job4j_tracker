@@ -118,7 +118,7 @@ public class StartUITest {
         actions.add(new ExitAction());
         new StartUI(output).init(in, tracker, actions);
         String expected = "";
-        Item[] itemsByName = tracker.findByName("Item name");
+        List<Item> itemsByName = tracker.findByName("Item name");
         for (Item item : itemsByName) {
             expected += item + System.lineSeparator();
         }
