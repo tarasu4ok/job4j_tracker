@@ -13,11 +13,6 @@ public class StringCompare implements Comparator<String> {
                 return rsl;
             }
         }
-        return (left.length() != right.length() ? Integer.compare(left.length(), right.length()) : 0);
-    }
-
-    public static void main(String[] args) {
-        int res = new StringCompare().compare("ssd", "asd");
-        System.out.println(res);
+        return Integer.compare(left.length(), right.length());
     }
 }
