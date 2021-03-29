@@ -13,7 +13,7 @@ public class LambdaUsage {
         Comparator<String> cmpDescSize = (left, right) -> {
             System.out.println("compare length of two strings with desc sort: "
                     + left.length() + ":" + right.length());
-            return right.length() - left.length();
+            return Integer.compare(right.length(), left.length());
         };
     }
 }
