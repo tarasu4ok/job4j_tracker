@@ -12,11 +12,4 @@ public class MathFunctions {
         }
         return rsl;
     }
-
-    public static void main(String[] args) {
-        List<Double> rsl = diapason(5, 8, x -> x * 2 + 1);
-        for (Double el:rsl) {
-            System.out.println(el);
-        }
-    }
 }
