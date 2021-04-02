@@ -26,4 +26,3 @@ public class StreamUsage {
                 .forEach(System.out::println);
     }
 }
-
