@@ -25,17 +25,13 @@ public class CollectorsToMapUsageTest {
         );
         CollectorsToMapUsage mapUsage = new CollectorsToMapUsage();
         Map<String, Student> rsl = mapUsage.collect(students);
-        Map<String, Student> expected = new HashMap<>();
-        Student student = new Student(10, "Surname1");
-        expected.put(student.getSurname(), student);
-        student = new Student(40, "Surname4");
-        expected.put(student.getSurname(), student);
-        student = new Student(50, "Surname5");
-        expected.put(student.getSurname(), student);
-        student = new Student(70, "Surname7");
-        expected.put(student.getSurname(), student);
-        student = new Student(90, "Surname9");
-        expected.put(student.getSurname(), student);
+        Map<String, Student> expected = Map.of(
+                "Surname1", new Student(10, "Surname1"),
+                "Surname4", new Student(40, "Surname4"),
+                "Surname5", new Student(50, "Surname5"),
+                "Surname7", new Student(70, "Surname7"),
+                "Surname9", new Student(90, "Surname9")
+        );
         assertThat(rsl, is(expected));
     }
 
