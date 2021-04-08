@@ -13,12 +13,12 @@ public class NotifyAccountTest {
 
     @Test
     public void sentWithoutDoubles() {
-        List<Account> accounts = Arrays.asList(
+        List<Account> accounts = List.of(
                 new Account("123", "Petr Arsentev", "eDer3432f"),
                 new Account("142", "Petr Arsentev", "000001")
         );
         HashSet<Account> expect = new HashSet<>(
-                Arrays.asList(
+                List.of(
                         new Account("123", "Petr Arsentev", "eDer3432f"),
                         new Account("142", "Petr Arsentev", "000001")
                 )
@@ -28,14 +28,14 @@ public class NotifyAccountTest {
 
     @Test
     public void sentWithDoubles() {
-        List<Account> accounts = Arrays.asList(
+        List<Account> accounts = List.of(
                 new Account("155", "Taras Kramarenko", "zzzxxxccc"),
                 new Account("172", "Ivan Ivanov", "0000044"),
                 new Account("155", "Tar Kram", "gggggggg"),
                 new Account("172", "Ivan Ivanov", "0000011")
         );
         HashSet<Account> expect = new HashSet<>(
-                Arrays.asList(
+                List.of(
                         new Account("155", "Taras Kramarenko", "zzzxxxccc"),
                         new Account("172", "Ivan Ivanov", "0000044")
                 )
