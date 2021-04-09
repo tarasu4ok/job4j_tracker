@@ -8,10 +8,19 @@ public class FighterAction implements CharacterAction {
                 + character.getSpecialization().getName() + "][" + character.getIndex() + "]";
         String actionName = "\uD83E\uDD1C";
         switch (activeTroop.getRace()) {
-            case ELF -> hp = 15;
-            case HUMAN, UNDEAD -> hp = 18;
-            case ORK -> hp = 20;
-            default -> hp = 0;
+            case ELF:
+                hp = 15;
+                break;
+            case HUMAN:
+            case UNDEAD:
+                hp = 18;
+                break;
+            case ORK:
+                hp = 20;
+                break;
+            default:
+                hp = 0;
+                break;
         }
         character.makeHitOrShoot(hp, enemyTroop, actionCharacter, actionName);
     }

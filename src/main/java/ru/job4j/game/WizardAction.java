@@ -7,14 +7,16 @@ public class WizardAction implements CharacterAction {
                 + character.getSpecialization().getName() + "][" + character.getIndex() + "]";
         String actionName = "";
         switch (activeTroop.getRace()) {
-            case ELF, HUMAN, ORK -> {
+            case ELF:
+            case HUMAN:
+            case ORK:
                 actionName += "накладывает улучшение на";
                 character.makeTeammateStrong(activeTroop, actionCharacter, actionName);
-            }
-            case UNDEAD -> {
+                break;
+            case UNDEAD:
                 actionName += "насылает недуг на";
                 character.makeEnemyWeak(enemyTroop, actionCharacter, actionName);
-            }
+                break;
         }
     }
 
@@ -25,25 +27,25 @@ public class WizardAction implements CharacterAction {
                 + character.getSpecialization().getName() + "][" + character.getIndex() + "]";
         String actionName = "";
         switch (activeTroop.getRace()) {
-            case ELF -> {
+            case ELF:
                 hp = 10;
                 actionName += "\uD83D\uDCAB";
                 character.makeHitOrShoot(hp, enemyTroop, actionCharacter, actionName);
-            }
-            case HUMAN -> {
+                break;
+            case HUMAN:
                 hp = 4;
                 actionName += "\uD83D\uDCAB";
                 character.makeHitOrShoot(hp, enemyTroop, actionCharacter, actionName);
-            }
-            case ORK -> {
+                break;
+            case ORK:
                 actionName += "накладывает проклятие на";
                 character.makeEnemyNotStrong(enemyTroop, actionCharacter, actionName);
-            }
-            case UNDEAD -> {
+                break;
+            case UNDEAD:
                 hp = 5;
                 actionName += "\uD83D\uDCAB";
                 character.makeHitOrShoot(hp, enemyTroop, actionCharacter, actionName);
-            }
+                break;
         }
     }
 }

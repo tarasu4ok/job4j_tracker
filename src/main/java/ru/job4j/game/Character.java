@@ -70,8 +70,12 @@ public class Character {
 
     private double calculateAttackHp(double hp) {
         switch (this.getPower()) {
-            case WEAK -> hp = hp / 2;
-            case STRONG -> hp = hp * 1.5;
+            case WEAK:
+                hp = hp / 2;
+                break;
+            case STRONG:
+                hp = hp * 1.5;
+                break;
         }
         this.setPower(Power.REGULAR);
         return hp;

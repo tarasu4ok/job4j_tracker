@@ -8,10 +8,18 @@ public class ArcherAction implements CharacterAction {
                 + character.getSpecialization().getName() + "][" + character.getIndex() + "]";
         String actionName = "\uD83C\uDFF9";
         switch (activeTroop.getRace()) {
-            case ELF -> hp = 7;
-            case HUMAN -> hp = 5;
-            case ORK -> hp = 3;
-            case UNDEAD -> hp = 4;
+            case ELF:
+                hp = 7;
+                break;
+            case HUMAN:
+                hp = 5;
+                break;
+            case ORK:
+                hp = 3;
+                break;
+            case UNDEAD:
+                hp = 4;
+                break;
         }
         character.makeHitOrShoot(hp, enemyTroop, actionCharacter, actionName);
     }
@@ -23,10 +31,19 @@ public class ArcherAction implements CharacterAction {
                 + character.getSpecialization().getName() + "][" + character.getIndex() + "]";
         String actionName = "\uD83E\uDD1C";
         switch (activeTroop.getRace()) {
-            case ELF, HUMAN -> hp = 3;
-            case ORK -> hp = 2;
-            case UNDEAD -> hp = 4;
-            default -> hp = 0;
+            case ELF:
+            case HUMAN:
+                hp = 3;
+                break;
+            case ORK:
+                hp = 2;
+                break;
+            case UNDEAD:
+                hp = 4;
+                break;
+            default:
+                hp = 0;
+                break;
         }
         character.makeHitOrShoot(hp, enemyTroop, actionCharacter, actionName);
     }

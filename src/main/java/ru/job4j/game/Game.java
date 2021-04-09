@@ -48,14 +48,22 @@ public class Game {
             this.showMenu(actions);
             int select = input.askInt("Select: ");
             switch (select) {
-                case 1 -> {
+                case 1:
                     makeOneStep(teams.get(0), teams.get(1));
                     makeOneStep(teams.get(1), teams.get(0));
-                }
-                case 2 -> playAllGame(teams.get(0), teams.get(1));
-                case 3 -> showResults(teams.get(0), teams.get(1));
-                case 4 -> createNewTeams();
-                case 0 -> run = false;
+                    break;
+                case 2:
+                    playAllGame(teams.get(0), teams.get(1));
+                    break;
+                case 3:
+                    showResults(teams.get(0), teams.get(1));
+                    break;
+                case 4:
+                    createNewTeams();
+                    break;
+                case 0:
+                    run = false;
+                    break;
             }
         }
     }
@@ -93,7 +101,7 @@ public class Game {
 
     private boolean makeOneStep(Troop activeTroop, Troop enemyTroop) {
         stepsCount++;
-        CharacterAction action;
+        CharacterAction action = null;
         Character characterForAction;
         if (activeTroop.getStrongCharacter() != null) {
             characterForAction = activeTroop.getStrongCharacter();
@@ -102,12 +110,17 @@ public class Game {
             int randomIndex = RANDOM.nextInt(activeTroop.getActiveCharacters().size());
             characterForAction = activeTroop.getActiveCharacters().get(randomIndex);
         }
-
-        action = switch (characterForAction.getSpecialization()) {
-            case WIZARD -> new WizardAction();
-            case ARCHER -> new ArcherAction();
-            case FIGHTER -> new FighterAction();
-        };
+        switch (characterForAction.getSpecialization()) {
+            case WIZARD:
+                action = new WizardAction();
+                break;
+            case ARCHER:
+                action = new ArcherAction();
+                break;
+            case FIGHTER:
+                action = new FighterAction();
+                break;
+        }
         int randomAction = RANDOM.nextInt(2) + 1;
         if (Specialization.FIGHTER.equals(characterForAction.getSpecialization())
                 || randomAction == 1) {
