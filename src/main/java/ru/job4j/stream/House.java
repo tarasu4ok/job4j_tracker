@@ -9,13 +9,13 @@ public class House {
 
     @Override
     public String toString() {
-        return "House{" +
-                "yearBuild=" + yearBuild +
-                ", material='" + material + '\'' +
-                ", floorsCount=" + floorsCount +
-                ", square=" + square +
-                ", hasGarage=" + hasGarage +
-                '}';
+        return "House{"
+                + "yearBuild=" + yearBuild
+                + ", material='" + material + '\''
+                + ", floorsCount=" + floorsCount
+                + ", square=" + square
+                + ", hasGarage=" + hasGarage
+                + '}';
     }
 
     static class Builder {

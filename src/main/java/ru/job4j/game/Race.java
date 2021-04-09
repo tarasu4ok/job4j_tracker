@@ -8,7 +8,6 @@ public enum Race {
     ORK("ОРКИ"),
     UNDEAD("НЕЖИТЬ");
 
-    private static final Random random = new Random();
     private final String name;
 
     Race(String name) {
@@ -16,14 +15,14 @@ public enum Race {
     }
 
     public static Race getRandomRace() {
-        return Race.values()[random.nextInt(Race.values().length)];
+        return Race.values()[Game.RANDOM.nextInt(Race.values().length)];
     }
 
     public static Race getRandomOppositeRace(Race race) {
         if (ELF.equals(race) || HUMAN.equals(race)) {
-            return Race.values()[random.nextInt(2) + 2];
+            return Race.values()[Game.RANDOM.nextInt(2) + 2];
         } else {
-            return Race.values()[random.nextInt(2)];
+            return Race.values()[Game.RANDOM.nextInt(2)];
         }
     }
 

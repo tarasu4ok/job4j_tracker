@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Game {
-    public static final Random random = new Random();
+    public static final Random RANDOM = new Random();
     private final int fullHealthHp = 100;
     private final Power defaultPower = Power.REGULAR;
     private List<Troop> teams;
@@ -65,14 +65,16 @@ public class Game {
         double totalHp = 0;
         System.out.println("===== [" + troopA.getRace().getName() + "] =====");
         for (Character character : troopA.getActiveCharacters()) {
-            System.out.println(character.getSpecialization().getName() + ": " + character.getLifeHp());
+            System.out.println(character.getSpecialization().getName() + ": "
+                    + character.getLifeHp());
             totalHp += character.getLifeHp();
         }
         System.out.println("Total HP: " + totalHp);
         totalHp = 0;
         System.out.println("===== [" + troopB.getRace().getName() + "] =====");
         for (Character character : troopB.getActiveCharacters()) {
-            System.out.println(character.getSpecialization().getName() + ": " + character.getLifeHp());
+            System.out.println(character.getSpecialization().getName() + ": "
+                    + character.getLifeHp());
             totalHp += character.getLifeHp();
         }
         System.out.println("Total HP: " + totalHp);
@@ -97,7 +99,7 @@ public class Game {
             characterForAction = activeTroop.getStrongCharacter();
             activeTroop.setStrongCharacter(null);
         } else {
-            int randomIndex = random.nextInt(activeTroop.getActiveCharacters().size());
+            int randomIndex = RANDOM.nextInt(activeTroop.getActiveCharacters().size());
             characterForAction = activeTroop.getActiveCharacters().get(randomIndex);
         }
 
@@ -106,14 +108,16 @@ public class Game {
             case ARCHER -> new ArcherAction();
             case FIGHTER -> new FighterAction();
         };
-        int randomAction = random.nextInt(2) + 1;
-        if (Specialization.FIGHTER.equals(characterForAction.getSpecialization()) || randomAction == 1) {
+        int randomAction = RANDOM.nextInt(2) + 1;
+        if (Specialization.FIGHTER.equals(characterForAction.getSpecialization())
+                || randomAction == 1) {
             action.firstAction(characterForAction, activeTroop, enemyTroop);
         } else {
             action.secondAction(characterForAction, activeTroop, enemyTroop);
         }
         if (enemyTroop.getActiveCharacters().size() == 0) {
-            System.out.println("В отряде расы [" + enemyTroop.getRace().getName() + "] не осталось живых персонажей");
+            System.out.println("В отряде расы [" + enemyTroop.getRace().getName()
+                    + "] не осталось живых персонажей");
             System.out.println("Победила раса [" + activeTroop.getRace().getName() + "]");
             showResults(activeTroop, enemyTroop);
             return false;

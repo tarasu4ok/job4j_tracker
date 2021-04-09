@@ -18,23 +18,26 @@ public class Character {
     }
 
     public Character chooseCharacterForAction(List<Character> troopCharacters) {
-        int randomCharacter = Game.random.nextInt(troopCharacters.size());
+        int randomCharacter = Game.RANDOM.nextInt(troopCharacters.size());
         return troopCharacters.get(randomCharacter);
     }
 
     // наложение улучшения на персонажа своего отряда
     public void makeTeammateStrong(Troop teamTroop, String actionCharacter, String actionName) {
         if (teamTroop.getActiveNotMagicCharacters().size() != 0) {
-            Character teammateCharacter = chooseCharacterForAction(teamTroop.getActiveNotMagicCharacters());
+            Character teammateCharacter =
+                    chooseCharacterForAction(teamTroop.getActiveNotMagicCharacters());
             teammateCharacter.setPower(Power.STRONG);
             teamTroop.setStrongCharacter(teammateCharacter);
             System.out.println(actionCharacter + " " + actionName
                     + " [" + teamTroop.getRace().getName() + "]["
-                    + teammateCharacter.getSpecialization().getName() + "][" + teammateCharacter.getIndex()
+                    + teammateCharacter.getSpecialization().getName() + "]["
+                    + teammateCharacter.getIndex()
                     + "], своего отряда на один ход");
         } else {
             System.out.println(actionCharacter
-                    + " не может наложить улучшение на персонажей своего отряда, поскольку остался один");
+                    + " не может наложить улучшение на персонажей своего отряда, "
+                    + "поскольку остался один");
         }
     }
 
@@ -45,10 +48,13 @@ public class Character {
             enemyCharacter.setPower(Power.REGULAR);
             enemyTroop.setStrongCharacter(null);
             System.out.println(actionCharacter + " " + actionName + " ["
-                    + enemyTroop.getRace().getName() + "][" + enemyCharacter.getSpecialization().getName()
-                    + "][" + enemyCharacter.getIndex() + "] вражеского отряда, снимая с него улучшение");
+                    + enemyTroop.getRace().getName() + "]["
+                    + enemyCharacter.getSpecialization().getName()
+                    + "][" + enemyCharacter.getIndex() + "] вражеского отряда, "
+                    + "снимая с него улучшение");
         } else {
-            System.out.println(actionCharacter + " не может снять улучшение с персонажей вражеского отряда");
+            System.out.println(actionCharacter + " не может снять улучшение с "
+                    + "персонажей вражеского отряда");
         }
     }
 
@@ -57,7 +63,8 @@ public class Character {
         Character enemyCharacter = chooseCharacterForAction(enemyTroop.getActiveCharacters());
         enemyCharacter.setPower(Power.WEAK);
         System.out.println(actionCharacter + " " + actionName + " ["
-                + enemyTroop.getRace().getName() + "][" + enemyCharacter.getSpecialization().getName()
+                + enemyTroop.getRace().getName() + "]["
+                + enemyCharacter.getSpecialization().getName()
                 + "][" + enemyCharacter.getIndex() + "], уменьшая на 50% его урон на один ход");
     }
 
@@ -71,7 +78,10 @@ public class Character {
     }
 
     // нанести урон или выстрелить из лука
-    public void makeHitOrShoot(double hp, Troop enemyTroop, String actionCharacter, String actionName) {
+    public void makeHitOrShoot(double hp,
+                               Troop enemyTroop,
+                               String actionCharacter,
+                               String actionName) {
         Character enemyCharacter = chooseCharacterForAction(enemyTroop.getActiveCharacters());
         double attackHp = calculateAttackHp(hp);
         double newHealthHp = enemyCharacter.getLifeHp() - attackHp;
@@ -83,7 +93,8 @@ public class Character {
             enemyCharacter.setLifeHp(0);
             enemyTroop.removeActiveCharacter(enemyCharacter);
             enemyTroop.removeActiveNotMagicCharacter(enemyCharacter);
-            str += " . [" + enemyTroop.getRace().getName() + "][" + enemyCharacter.getSpecialization().getName()
+            str += " . [" + enemyTroop.getRace().getName() + "]["
+                    + enemyCharacter.getSpecialization().getName()
                     + "][" + enemyCharacter.getIndex() + "] \uD83D\uDD46";
         } else {
             enemyCharacter.setLifeHp(newHealthHp);
