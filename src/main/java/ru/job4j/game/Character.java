@@ -76,6 +76,8 @@ public class Character {
             case STRONG:
                 hp = hp * 1.5;
                 break;
+            default:
+                break;
         }
         this.setPower(Power.REGULAR);
         return hp;

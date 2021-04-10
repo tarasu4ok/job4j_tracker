@@ -20,6 +20,8 @@ public class ArcherAction implements CharacterAction {
             case UNDEAD:
                 hp = 4;
                 break;
+            default:
+                break;
         }
         character.makeHitOrShoot(hp, enemyTroop, actionCharacter, actionName);
     }

@@ -64,6 +64,8 @@ public class Game {
                 case 0:
                     run = false;
                     break;
+                default:
+                    break;
             }
         }
     }
@@ -119,6 +121,8 @@ public class Game {
                 break;
             case FIGHTER:
                 action = new FighterAction();
+                break;
+            default:
                 break;
         }
         int randomAction = RANDOM.nextInt(2) + 1;

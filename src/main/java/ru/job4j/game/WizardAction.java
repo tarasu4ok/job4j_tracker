@@ -17,6 +17,8 @@ public class WizardAction implements CharacterAction {
                 actionName += "насылает недуг на";
                 character.makeEnemyWeak(enemyTroop, actionCharacter, actionName);
                 break;
+            default:
+                break;
         }
     }
 
@@ -45,6 +47,8 @@ public class WizardAction implements CharacterAction {
                 hp = 5;
                 actionName += "\uD83D\uDCAB";
                 character.makeHitOrShoot(hp, enemyTroop, actionCharacter, actionName);
+                break;
+            default:
                 break;
         }
     }
