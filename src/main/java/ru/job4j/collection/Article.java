@@ -7,25 +7,15 @@ public class Article {
                 .toLowerCase()
                 .replaceAll("\\p{P}", "");
         String[] words = origin.split(" ");
-        Map<String, Integer> originMap = new HashMap<>();
-        for (String word : words) {
-            originMap.computeIfPresent(word, (key, value) -> value + 1);
-            originMap.putIfAbsent(word, 1);
-        }
+        Set<String> originSet = new HashSet<>();
+        Collections.addAll(originSet, words);
 
         line = line
                 .toLowerCase()
                 .replaceAll("\\p{P}", "");
-        String[] lineWords = line.split(" ");
-        Map<String, Integer> lineMap = new HashMap<>();
-        for (String word : lineWords) {
-            lineMap.computeIfPresent(word, (key, value) -> value + 1);
-            lineMap.putIfAbsent(word, 1);
-        }
-
-        for (Map.Entry<String, Integer> entry : lineMap.entrySet()) {
-            if (!originMap.containsKey(entry.getKey())
-                    || originMap.get(entry.getKey()) < entry.getValue()) {
+        List<String> lineList = List.of(line.split(" "));
+        for (String word : lineList) {
+            if (!originSet.contains(word)) {
                 return false;
             }
         }
