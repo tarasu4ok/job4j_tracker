@@ -5,12 +5,7 @@ public class Article {
     public static boolean generateBy(String origin, String line) {
         origin = origin
                 .toLowerCase()
-                .replace("!", "")
-                .replace(".", "")
-                .replace(";", "")
-                .replace("?", "")
-                .replace(",", "")
-                .replace(":", "");
+                .replaceAll("\\p{P}", "");
         String[] words = origin.split(" ");
         Map<String, Integer> originMap = new HashMap<>();
         for (String word : words) {
@@ -20,12 +15,7 @@ public class Article {
 
         line = line
                 .toLowerCase()
-                .replace("!", "")
-                .replace(".", "")
-                .replace(";", "")
-                .replace("?", "")
-                .replace(",", "")
-                .replace(":", "");
+                .replaceAll("\\p{P}", "");
         String[] lineWords = line.split(" ");
         Map<String, Integer> lineMap = new HashMap<>();
         for (String word : lineWords) {
