@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import java.util.*;
 
+import static org.hamcrest.core.Is.is;
+
 public class ItemTest {
 
     @Test
@@ -22,7 +24,7 @@ public class ItemTest {
                 new Item("Task #4", 4)
         );
         Collections.sort(list);
-        Assert.assertEquals(expectedList, list);
+        Assert.assertThat(expectedList, is(list));
     }
 
     @Test
@@ -40,7 +42,7 @@ public class ItemTest {
                 new Item("Task #1", 1)
         );
         Collections.sort(list, Collections.reverseOrder());
-        Assert.assertEquals(expectedList, list);
+        Assert.assertThat(expectedList, is(list));
     }
 
     @Test
@@ -58,7 +60,7 @@ public class ItemTest {
                 new Item("Task #7", 2)
         );
         Collections.sort(list, new ItemComparatorNormalOrderByName());
-        Assert.assertEquals(expectedList, list);
+        Assert.assertThat(expectedList, is(list));
     }
 
     @Test
@@ -76,6 +78,6 @@ public class ItemTest {
                 new Item("Task #1", 1)
         );
         Collections.sort(list, new ItemComparatorReverseOrderByName());
-        Assert.assertEquals(expectedList, list);
+        Assert.assertThat(expectedList, is(list));
     }
 }
