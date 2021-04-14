@@ -11,13 +11,13 @@ public class ItemTest {
 
     @Test
     public void normalOrderById() {
-        List<Item> list = Arrays.asList(
+        List<Item> list = List.of(
                 new Item("Task #1", 1),
                 new Item("Task #3", 3),
                 new Item("Task #4", 4),
                 new Item("Task #2", 2)
         );
-        List<Item> expectedList = Arrays.asList(
+        List<Item> expectedList = List.of(
                 new Item("Task #1", 1),
                 new Item("Task #2", 2),
                 new Item("Task #3", 3),
@@ -29,55 +29,55 @@ public class ItemTest {
 
     @Test
     public void reverseOrderById() {
-        List<Item> list = Arrays.asList(
+        List<Item> list = List.of(
                 new Item("Task #1", 1),
                 new Item("Task #7", 4),
                 new Item("Task #5", 2),
                 new Item("Task #3", 3)
         );
-        List<Item> expectedList = Arrays.asList(
+        List<Item> expectedList = List.of(
                 new Item("Task #7", 4),
                 new Item("Task #3", 3),
                 new Item("Task #5", 2),
                 new Item("Task #1", 1)
         );
         Collections.sort(list, Collections.reverseOrder());
-        Assert.assertEquals(expectedList, list);
+        Assert.assertThat(expectedList, is(list));
     }
 
     @Test
     public void normalOrderByName() {
-        List<Item> list = Arrays.asList(
+        List<Item> list = List.of(
                 new Item("Task #1", 1),
                 new Item("Task #7", 2),
                 new Item("Task #4", 3),
                 new Item("Task #5", 4)
         );
-        List<Item> expectedList = Arrays.asList(
+        List<Item> expectedList = List.of(
                 new Item("Task #1", 1),
                 new Item("Task #4", 3),
                 new Item("Task #5", 4),
                 new Item("Task #7", 2)
         );
         Collections.sort(list, new ItemComparatorNormalOrderByName());
-        Assert.assertEquals(expectedList, list);
+        Assert.assertThat(expectedList, is(list));
     }
 
     @Test
     public void reverseOrderByName() {
-        List<Item> list = Arrays.asList(
+        List<Item> list = List.of(
                 new Item("Task #1", 1),
                 new Item("Task #7", 2),
                 new Item("Task #4", 3),
                 new Item("Task #5", 4)
         );
-        List<Item> expectedList = Arrays.asList(
+        List<Item> expectedList = List.of(
                 new Item("Task #7", 2),
                 new Item("Task #5", 4),
                 new Item("Task #4", 3),
                 new Item("Task #1", 1)
         );
         Collections.sort(list, new ItemComparatorReverseOrderByName());
-        Assert.assertEquals(expectedList, list);
+        Assert.assertThat(expectedList, is(list));
     }
 }
