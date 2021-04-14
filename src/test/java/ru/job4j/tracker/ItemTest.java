@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import java.util.*;
 
+import static org.hamcrest.core.Is.is;
+
 public class ItemTest {
 
     @Test
@@ -22,7 +24,7 @@ public class ItemTest {
                 new Item("Task #4", 4)
         );
         Collections.sort(list);
-        Assert.assertEquals(expectedList, list);
+        Assert.assertThat(expectedList, is(list));
     }
 
     @Test
