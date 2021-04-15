@@ -27,15 +27,12 @@ public class FreezeStr {
         }
         for (int i = 0; i < right.length(); i++) {
             String index = String.valueOf(right.charAt(i));
-            if (!leftMap.containsKey(index) || (leftMap.get(index) == 0)) {
+            if (!leftMap.containsKey(index)) {
                 return false;
+            } else if (leftMap.get(index) == 1) {
+                leftMap.remove(index);
             } else {
                 leftMap.computeIfPresent(index, (key, value) -> value - 1);
-            }
-        }
-        for (Integer value : leftMap.values()) {
-            if (!Integer.valueOf(0).equals(value)) {
-                return false;
             }
         }
         return true;
