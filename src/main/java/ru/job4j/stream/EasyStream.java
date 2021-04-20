@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 public class EasyStream {
     private List<Integer> source;
 
-    public EasyStream(List<Integer> source) {
+    private EasyStream(List<Integer> source) {
         this.source = source;
     }
 
@@ -21,8 +21,7 @@ public class EasyStream {
         for (Integer num : source) {
             rsl.add(fun.apply(num));
         }
-        source = rsl;
-        return this;
+        return new EasyStream(rsl);
     }
 
     public EasyStream filter(Predicate<Integer> fun) {
@@ -32,8 +31,7 @@ public class EasyStream {
                 rsl.add(num);
             }
         }
-        source = rsl;
-        return this;
+        return new EasyStream(rsl);
     }
 
     public List<Integer> collect() {
